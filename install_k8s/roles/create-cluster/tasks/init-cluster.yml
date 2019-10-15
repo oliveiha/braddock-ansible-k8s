@@ -13,7 +13,7 @@
 - name: Symlink the kubectl admin.conf to ~/.kube/conf.
   file:
     src: /etc/kubernetes/admin.conf
-    dest: ~/.kube/config
+    dest: /home/tiago/.kube/config
     state: link
 - name: Configure weavenet networking.
   shell: kubectl apply -f {{ default_kubernetes_cni_weavenet_manifestUrl }}
