@@ -4,9 +4,9 @@
   gather_facts: no
   pre_tasks:
   - name: 'atualizando repo'
-    raw: 'apt-get update'
+    shell: 'apt-get update'
   - name: 'instalando o python'
-    raw: 'apt-get install python'
+    shell: 'apt-get install python'
   vars_files:
   - 'secrets/{{ app_env }}/cofre.yaml'
   roles:
@@ -14,7 +14,7 @@
 
 - hosts: k8s-master
   become: yes
-  user: ubuntu
+  user: tiago
   vars_files:
   - 'secrets/{{ app_env }}/cofre.yaml'
   roles:
@@ -22,7 +22,7 @@
 
 - hosts: k8s-workers
   become: yes
-  user: ubuntu
+  user: tiago
   vars_files:
   - 'secrets/{{ app_env }}/cofre.yaml'
   roles:
@@ -30,7 +30,7 @@
 
 - hosts: k8s-master
   become: yes
-  user: ubuntu
+  user: tiago
   vars_files:
   - 'secrets/{{ app_env }}/cofre.yaml'
   roles:
