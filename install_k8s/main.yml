@@ -4,9 +4,9 @@
   gather_facts: no
   pre_tasks:
   - name: 'atualizando repo'
-    raw: 'apt update -y'
+    raw: 'sudo apt update -y'
   - name: 'instalando o python'
-    raw: 'apt install -y python'
+    raw: 'sudo apt install -y python'
   vars_files:
   - 'secrets/{{ app_env }}/cofre.yaml'
   roles:
