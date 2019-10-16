@@ -2,10 +2,6 @@
   shell: curl -L https://git.io/get_helm.sh | bash -
   register: helm_result
 
-- name: Helm init
-  shell: helm init 
-  register: helm_init_result
-
 - name: Create service account to tiller
   shell: kubectl create serviceaccount tiller
   register: tiller_result
@@ -17,6 +13,10 @@
 - name: Apply patch to tiller-deploy
   shell: kubectl patch deployments -n kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
   register: patch_result
+
+- name: Helm init
+  shell: helm init --service-account tiller 
+  register: helm_init_result
 
 - name: Waiting tiller pod
   pause:
