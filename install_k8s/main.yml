@@ -6,7 +6,7 @@
   - name: 'atualizando repo'
     raw: 'sudo apt update -y'
   - name: 'instalando o python'
-    raw: 'sudo apt install -y python'
+    raw: 'apt install python'
   #vars_files:
   #- 'secrets/{{ app_env }}/cofre.yaml'
   roles:
